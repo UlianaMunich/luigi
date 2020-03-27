@@ -96,17 +96,12 @@ jobs:
       script:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
             npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
-            # npm --prefix ./website/fiddle install ./website/fiddle;
             lerna bootstrap --ci;
-            # WORKAROUND - START
-            # Due to open bug at lerna, https://github.com/lerna/lerna/issues/2352
-            # Link fiddle manually:
             rm -rf $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/*;
             ln -s $TRAVIS_BUILD_DIR/core/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
             ln -s $TRAVIS_BUILD_DIR/client/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oauth2 $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oauth2;
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oidc $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oidc;
-            # WORKAROUND - END
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
           fi'
