@@ -97,14 +97,20 @@ jobs:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
             npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
             lerna bootstrap --ci --force-local;
-            ls -lah node_modules/@luigi-project;
-            ls -lah node_modules/@luigi-project/core;
-            ls -lah node_modules/@luigi-project/client;
+
+            ls -lah $TRAVIS_BUILD_DIR/core/public;
+            ls -lah $TRAVIS_BUILD_DIR/client/public;
+            ls -lah $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oauth2;
+            
             rm -rf $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/*;
             ln -s $TRAVIS_BUILD_DIR/core/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
             ln -s $TRAVIS_BUILD_DIR/client/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oauth2 $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oauth2;
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oidc $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oidc;
+
+            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project;
+            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
+            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
           fi'
