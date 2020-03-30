@@ -97,6 +97,9 @@ jobs:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
             npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
             lerna bootstrap --ci --force-local;
+            ls -lah node_modules/@luigi-project;
+            ls -lah node_modules/@luigi-project/core;
+            ls -lah node_modules/@luigi-project/client;
             rm -rf $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/*;
             ln -s $TRAVIS_BUILD_DIR/core/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
             ln -s $TRAVIS_BUILD_DIR/client/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
