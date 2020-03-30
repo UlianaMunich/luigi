@@ -101,6 +101,8 @@ jobs:
             ls -lah $TRAVIS_BUILD_DIR/core/public;
             ls -lah $TRAVIS_BUILD_DIR/client/public;
             ls -lah $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oauth2;
+            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
+            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
             
             rm -rf $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/*;
             ln -s $TRAVIS_BUILD_DIR/core/public $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
@@ -108,7 +110,6 @@ jobs:
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oauth2 $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oauth2;
             ln -s $TRAVIS_BUILD_DIR/plugins/auth/public/auth-oidc $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/plugin-auth-oidc;
 
-            ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project;
             ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/core;
             ls -lah $TRAVIS_BUILD_DIR/website/fiddle/node_modules/@luigi-project/client;
             npm i -g whitesource;
