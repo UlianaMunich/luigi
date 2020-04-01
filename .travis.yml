@@ -93,11 +93,13 @@ jobs:
     - name: 'Whitesource check'
       # if: repo = SAP/luigi AND branch = master
       if: repo = SAP/luigi AND (branch = master OR branch = workaround-for-symlinking-in-travis-yml)
+      #Whitesource can't deal with symlinking, therefore we can't use lerna
       script:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
-            lerna bootstrap --ci;
-            npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
-            npm --prefix ./website/fiddle install ./website/fiddle;
+            npm --prefix ./client/public --ci ./client/public;
+            npm --prefix ./core/public --ci ./core/public;
+            npm --prefix ./website/landingpage/dev --ci ./website/landingpage/dev;
+            npm --prefix ./website/fiddle --ci ./website/fiddle;
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
           fi'
