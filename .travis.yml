@@ -95,8 +95,8 @@ jobs:
       if: repo = SAP/luigi AND (branch = master OR branch = workaround-for-symlinking-in-travis-yml)
       script:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
+            lerna bootstrap --ci;
             npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
-            lerna bootstrap --ci --force-local;
             npm --prefix ./website/fiddle install ./website/fiddle;
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
