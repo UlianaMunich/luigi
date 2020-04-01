@@ -80,14 +80,14 @@ jobs:
         - rm -rf $TRAVIS_BUILD_DIR/core/examples
 
     #----- DOCU -----
-    # - stage: 'Documentation & Tests'
-    #   name: 'Check Documentation'
-    #   script:
-    #     - cd $TRAVIS_BUILD_DIR/scripts && npm ci
-    #     - cd $TRAVIS_BUILD_DIR && bash ./scripts/docuCheck.sh
-    #   before_cache:
-    #     - rm -rf ~/.npm/_logs
-    #     - rm -rf ~/.npm/_cacache
+    - stage: 'Documentation & Tests'
+      name: 'Check Documentation'
+      script:
+        - cd $TRAVIS_BUILD_DIR/scripts && npm ci
+        - cd $TRAVIS_BUILD_DIR && bash ./scripts/docuCheck.sh
+      before_cache:
+        - rm -rf ~/.npm/_logs
+        - rm -rf ~/.npm/_cacache
 
     #----- WHITESOURCE -----
     - name: 'Whitesource check'
@@ -106,11 +106,11 @@ jobs:
         - rm -rf ~/.npm/_cacache
 
     # ----- INTEGRATION -----
-    # - name: 'Integration Testing 1'
-    #   <<: *integration-testing
+    - name: 'Integration Testing 1'
+      <<: *integration-testing
 
-    # - name: 'Integration Testing 2'
-    #   <<: *integration-testing
+    - name: 'Integration Testing 2'
+      <<: *integration-testing
 
     # ----- NPM PUBLISH -----
     - stage: 'Publish'
