@@ -98,7 +98,7 @@ jobs:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
             npm --prefix ./client ci ./client;
             npm --prefix ./core ci ./core;
-            npm --prefix ./website/landingpage/dev --ci ./website/landingpage/dev;
+            npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
             npm --prefix ./website/fiddle --ci ./website/fiddle;
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
