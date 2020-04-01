@@ -96,6 +96,7 @@ jobs:
       script:
         - 'if [ ! -z "${WHITESOURCE_APIKEY}" ]; then
             npm --prefix ./website/landingpage/dev install ./website/landingpage/dev;
+            lerna bootstrap --ci --force-local;
             npm --prefix ./website/fiddle install ./website/fiddle;
             npm i -g whitesource;
             bash ./scripts/whiteSource.sh;
